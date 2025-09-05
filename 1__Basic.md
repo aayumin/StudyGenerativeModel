@@ -7,10 +7,10 @@
 1. 생성모델이란?
 2. 확률 기초 개념 이해
 3. 생성모델의 특징
-4. 생성모델의 주요 종류
-   4-1. VAE(Variational Autoencoder)
-   4-2. GAN(Generative Adversarial Networks)
-   4-3. Diffusion Models
+4. 생성모델의 주요 종류  
+     4-1) VAE(Variational Autoencoder)  
+     4-2) GAN(Generative Adversarial Networks)  
+     4-3) Diffusion Models  
 5. 비교 정리
 
 ---
