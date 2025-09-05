@@ -32,6 +32,8 @@ Diffusion Model은 **랜덤한 노이즈에서 시작해 점차 이미지를 복
 > 🎨 **비유**: 퍼즐 그림을 일부러 흐릿하게 만들고,  
 > 다시 원래 상태로 복원하는 마법을 배우는 것과 비슷합니다.
 
+<img width="45%" height="45%" alt="image" src="https://github.com/user-attachments/assets/79735be6-6493-411d-ad7c-fa62402aa416" />
+
 ---
 
 ## 2. Diffusion Model을 이해하기 위한 선수 지식
@@ -52,7 +54,10 @@ Diffusion Model은 **랜덤한 노이즈에서 시작해 점차 이미지를 복
 ### 2.3 마르코프 과정 (Markov Process)
 
 - 현재 상태가 오직 **이전 상태에만 의존**하는 확률적 과정입니다.
+- 그 동안 과거에 어떤 상태들을 거쳐왔는지는 상관 없이, 바로 이전 상태만 고려하면 됩니다.
 - Diffusion은 마르코프 체인을 따라 **이미지를 노이즈로 변형**합니다.
+
+<img width="512" height="203" alt="image" src="https://github.com/user-attachments/assets/ec7e98d5-7ac3-4cb6-859a-ec1052bd010c" />
 
 ---
 
@@ -65,9 +70,9 @@ Diffusion Model은 **랜덤한 노이즈에서 시작해 점차 이미지를 복
 
 수식으로 표현하면:
 
-```
-q(x_t | x_{t-1}) = 𝒩(x_t; √(1 - β_t) x_{t-1}, β_t I)
-```
+<img width="40%" height="40%" alt="image" src="https://github.com/user-attachments/assets/b924a9ac-c726-43d9-b3bf-0052646a1051" />
+
+
 
 여기서:
 - `β_t`는 timestep t에서 노이즈의 정도를 조절하는 **노이즈 스케줄**
@@ -92,7 +97,7 @@ q(x_t | x_{t-1}) = 𝒩(x_t; √(1 - β_t) x_{t-1}, β_t I)
 - 각 timestep마다 노이즈를 얼마나 추가할지를 결정하는 값
 - 보통 선형(linear), 코사인(cosine) 형태의 스케줄이 사용됩니다.
 
-> 📈 비유: 처음에는 천천히 더럽히고, 후반에는 빠르게 더럽히는 식의 설계
+> 📈 비유: 처음에는 천천히 먼지를 쌓고, 후반에는 빠르게 먼지를 쌓는 식의 설계
 
 ---
 
@@ -102,9 +107,8 @@ q(x_t | x_{t-1}) = 𝒩(x_t; √(1 - β_t) x_{t-1}, β_t I)
 
 목표는 다음을 맞추는 것입니다:
 
-```
-ε_θ(x_t, t) ≈ ε
-```
+<img width="20%" height="20%" alt="image" src="https://github.com/user-attachments/assets/274bb6b4-00a5-4ec4-9ce4-06ab248416ef" />
+
 
 즉, 모델이 "이 이미지에 어떤 노이즈가 섞였는지"를 맞추는 것이 핵심입니다.
 
@@ -117,18 +121,18 @@ q(x_t | x_{t-1}) = 𝒩(x_t; √(1 - β_t) x_{t-1}, β_t I)
 ### 4.1 목표
 
 모델은 **노이즈를 예측하도록 학습**됩니다.  
-즉, x_t와 timestep t를 입력받아,  
+즉, 현재 단계의 이미지 x_t와 timestep t를 입력받아,  
 x_t에 들어있는 **노이즈 ε** 를 맞추는 것이 학습의 목적입니다.
 
 ### 4.2 Loss Function
 
 보통 **Mean Squared Error (MSE)** 를 사용합니다:
 
-```
-L = E_{t, x₀, ε} [ || ε - ε_θ(x_t, t) ||² ]
-```
+
+<img width="25%" height="25%" alt="image" src="https://github.com/user-attachments/assets/ff21962e-b7f6-4e3c-a23c-6d4eb7d8df3e" />
 
 - 모델이 예측한 노이즈 `ε_θ` 와 실제 노이즈 `ε` 의 차이를 최소화합니다.
+- E는 평균(기댓값)을 의미합니다.
 
 ---
 
@@ -153,6 +157,7 @@ L = E_{t, x₀, ε} [ || ε - ε_θ(x_t, t) ||² ]
 ### Stable Diffusion
 
 - Latent 공간에서 Diffusion을 수행하여 **속도와 효율**을 개선
+  - 이미지 자체는 매우 높은 차원의 데이터지만, Latent 공간에서는 압축된 데이터를 이용할 수 있음
 - 텍스트 조건(`Text Prompt`)을 기반으로 이미지 생성 가능
 - 텍스트 → 잠재 공간 → 이미지로 이어지는 구조
 
