@@ -8,15 +8,10 @@
 2. 확률 기초 개념 이해
 3. 생성모델의 특징
 4. 생성모델의 주요 종류
-   - 확률 기반 모델
-   - Autoencoder 계열
-   - GAN(Generative Adversarial Networks)
-   - 확산모델(Diffusion Models)
-5. VAE(Variational Autoencoder)
-6. GAN(Generative Adversarial Networks)
-7. 확산모델(Diffusion Models)
-8. 비교 정리
-9. 주요 용어 정리
+   4-1. VAE(Variational Autoencoder)
+   4-2. GAN(Generative Adversarial Networks)
+   4-3. Diffusion Models
+5. 비교 정리
 
 ---
 
@@ -133,7 +128,7 @@ AI는 배운 확률 분포를 참고하여 다음과 같이 판단합니다:
 
 ---
 
-## 5. VAE (Variational Autoencoder)
+## 4-1. VAE (Variational Autoencoder)
 
 입력 데이터를 압축하여 의미 있는 공간(latent space)에 표현한 후, 다시 복원하는 모델입니다.
 
@@ -156,7 +151,7 @@ AI는 배운 확률 분포를 참고하여 다음과 같이 판단합니다:
 
 ---
 
-## 6. GAN (Generative Adversarial Networks)
+## 4-2. GAN (Generative Adversarial Networks)
 
 적대적 학습(Adversarial Training)을 통해 고품질 데이터를 생성하는 모델입니다.
 
@@ -185,7 +180,7 @@ Generator는 Discriminator를 속이기 위해 점점 더 그럴듯한 정교한
 
 ---
 
-## 7. 확산모델 (Diffusion Models)
+## 4-3. 확산모델 (Diffusion Models)
 
 처음에는 랜덤한 노이즈에서 시작하여, 점차 이미지를 복원해가는 모델입니다.
 
@@ -208,7 +203,7 @@ Generator는 Discriminator를 속이기 위해 점점 더 그럴듯한 정교한
 
 ---
 
-## 8. 비교 정리
+## 5. 비교 정리
 
 | 모델 | 구조 | 특징 | 단점 |
 |------|------|------|------|
